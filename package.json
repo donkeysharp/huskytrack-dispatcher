@@ -1,0 +1,14 @@
+{
+  "name": "dispatcher",
+  "version": "0.1.0",
+  "description": "Data Stream dispatcher",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "@donkeysharp",
+  "license": "MIT",
+  "dependencies": {
+    "mqtt": "^1.14.1"
+  }
+}
