@@ -9,6 +9,7 @@
   "author": "@donkeysharp",
   "license": "MIT",
   "dependencies": {
+    "influx": "^4.2.2",
     "mqtt": "^1.14.1"
   }
 }

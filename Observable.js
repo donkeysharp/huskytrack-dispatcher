@@ -17,10 +17,10 @@ class Observable {
     }
   }
 
-  notifyObservers(topic, message) {
+  notifyObservers(topic, message, info) {
     Object.keys(this.observers).forEach((key) => {
       var observer = this.observers[key];
-      observer.notify(topic, message);
+      observer.notify(topic, message, info);
     });
   }
 }

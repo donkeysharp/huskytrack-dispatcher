@@ -3,6 +3,7 @@
 var mqtt = require('mqtt');
 var Observable = require('./Observable');
 
+var truckRegex = /truck\/(.+)\/(speed|position|fuel)/;
 
 class MqttListener  extends Observable {
   constructor(config, topics) {
@@ -33,8 +34,16 @@ class MqttListener  extends Observable {
     });
 
     this.client.on('message', function(topic, message) {
+      if (!truckRegex.test(topic)) { return; }
+
+      var topicResult = truckRegex.exec(topic);
+      var info = {
+        deviceId: topicResult[1],
+        dataType: topicResult[2],
+      };
+
       console.log(`Message from ${topic}, notifying...`);
-      self.notifyObservers(topic, message);
+      self.notifyObservers(topic, message, info);
     });
 
     this.client.on('offline', function() {
