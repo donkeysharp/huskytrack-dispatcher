@@ -3,6 +3,7 @@
 var influx = require('influx');
 var MqttListener = require('./MqttListener');
 var StorageHandler = require('./handlers/StorageHandler');
+var WebSocketHandler = require('./handlers/WebSocketHandler');
 
 var topics = [ 'truck/+/position', 'truck/+/speed' ];
 var mqttConfig = {
@@ -20,4 +21,5 @@ var influxClient = influx({
 
 var listener = new MqttListener(mqttConfig, topics);
 listener.register('storage_handler', new StorageHandler(influxClient));
+listener.register('websocket_handler', new WebSocketHandler());
 listener.start();
