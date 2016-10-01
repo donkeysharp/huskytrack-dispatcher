@@ -10,6 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "influx": "^4.2.2",
-    "mqtt": "^1.14.1"
+    "mqtt": "^1.14.1",
+    "sockjs": "^0.3.18"
   }
 }
