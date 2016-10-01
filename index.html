@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test wS</title>
+</head>
+<body>
+
+<script src="//cdn.jsdelivr.net/sockjs/1/sockjs.min.js"></script>
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    var sock = new SockJS('http://localhost:8080/ws');
+    sock.onopen = function() {
+      console.log('open');
+      sock.send(JSON.stringify({type: 'subscribe', deviceId: '12345'}));
+    };
+    sock.onmessage = function(e) {
+      var data = JSON.parse(e.data);
+      console.log(data);
+      if (data.status === 'ok') {
+        console.log('everything is cool, I will wait for incomming data }:)');
+      }
+    };
+    sock.onclose = function() {
+      console.log('close');
+    };
+  })
+</script>
+</body>
+</html>
